@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>CS50 Lecture1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--set css when the screen is smaller dan 500px size -->
+        <style>            
+            @media (min-width: 500px) {
+                h1::before{
+                    content: "Welcome to My Web Page!";
+                }
+            }
+            @media (max-width: 499px){
+                h1::before{
+                    content: "Welcome";
+                }
+            }
+        </style>
+	</head>
+	<body>
+        <h1></h1>
+	</body>
+</html>
