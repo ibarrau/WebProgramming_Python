@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block heading %}
+    Hello note page
+{% endblock %}
+
+{% block body %}
+<ul>
+    {% for no in notes %}
+        <li> {{ no }} </li>
+    {% endfor %}
+</ul>
+
+<form action="{{ url_for('notas') }}" method="post">
+    <input type="text" name="note" placeholder="Enter Note Here" />
+    <button>Add Note</button>
+</form>
+
+{% endblock %}
