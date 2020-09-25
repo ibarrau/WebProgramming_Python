@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>CS50 Lecture5</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('#new-task').onsubmit = () => {
+                    //Create <li> element
+                    const li = document.createElement('li');
+                    li.innerHTML = document.querySelector('#task').value;
+                    
+                    //Add item in <ul>
+                    document.querySelector('#tasks').append(li);
+
+                    //Clear output
+                    document.querySelector('#task').value='';
+
+                    //Stop form from submitting
+                    return false
+                }
+            });
+            
+        </script>
+	</head>
+	<body>
+        <h1>Tasks</h1>
+        <ul id="tasks">            
+        </ul>
+        <form id="new-task">
+            <input id="task" automplete="off" autofocus type="text" placeholder="New Task">
+            <input type="submit">            
+        </form>
+        
+
+	</body>
+</html>

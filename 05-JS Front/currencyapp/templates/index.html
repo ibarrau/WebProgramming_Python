@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Currency app!</title>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>		
+	</head>
+	<body>
+        <form id="form">            
+            <input id="currency" type="text" automplete="off" autofocus placeholder="Currency" />
+            <input type="submit" value="Get Exchange Request">
+        </form>
+        <br>
+        <div id="result"></div>       
+	</body>
+</html>

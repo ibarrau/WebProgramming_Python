@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>CS50 Lecture5</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                //disable button on load
+                document.querySelector('#submit').disabled = true;
+
+                //enable button on key up
+                document.querySelector('#task').onkeyup = () => {
+                    if(document.querySelector('#task').value.length > 0)
+                        document.querySelector('#submit').disabled = false;
+                    else
+                        document.querySelector('#submit').disabled = true;
+                };
+
+                document.querySelector('#new-task').onsubmit = () => {
+                    //Create <li> element
+                    const li = document.createElement('li');
+                    li.innerHTML = document.querySelector('#task').value;
+                    
+                    //Add item in <ul>
+                    document.querySelector('#tasks').append(li);
+
+                    //Clear output
+                    document.querySelector('#task').value='';
+                    document.querySelector('#submit').disabled = true;
+
+                    //Stop form from submitting
+                    return false;
+                };
+            });
+            
+        </script>
+	</head>
+	<body>
+        <h1>Tasks</h1>
+        <ul id="tasks">            
+        </ul>
+        <form id="new-task">
+            <input id="task" automplete="off" autofocus type="text" placeholder="New Task">
+            <input id="submit" disabled type="submit">            
+        </form>
+        
+
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>CS50 Lecture5</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                //this.value will define for the element with the traditional function() most close.
+                document.querySelector('#color-change').onchange = function() {
+                    document.querySelector('#hello').style.color = this.value;
+                }
+            });
+            
+        </script>
+	</head>
+	<body>
+        <h1 id="hello">Hello</h1>
+        <!-- You can customize your own tag if it starts with data-[name] -->
+        <select id="color-change">
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="grey">Grey</option>
+        </select>
+        
+	</body>
+</html>

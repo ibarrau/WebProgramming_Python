@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>CS50 Lecture5</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                document.querySelector('#form').onsubmit = function(){
+                    const name = document.querySelector('#name').value
+                    alert(`Hello ${name}!`)
+                }
+            })
+            
+        </script>
+	</head>
+	<body>
+        <form id="form">
+            <input id="name" automplete="off" autofocus type="text" placeholder="Name">
+            <input type="submit">            
+        </form>
+	</body>
+</html>

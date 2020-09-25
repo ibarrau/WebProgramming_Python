@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>CS50 Lecture5</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                document.querySelector('#red').onclick = function(){
+                    document.querySelector('#hello').style.color = 'red';
+                }
+                document.querySelector('#blue').onclick = function(){
+                    document.querySelector('#hello').style.color = 'blue';
+                }
+                document.querySelector('#grey').onclick = function(){
+                    document.querySelector('#hello').style.color = 'grey';
+                }
+            });
+            
+        </script>
+	</head>
+	<body>
+        <h1 id="hello">Hello</h1>
+        <button id="blue">Blue</button>
+        <button id="red">Red</button>
+        <button id="grey">Grey</button>
+
+	</body>
+</html>
