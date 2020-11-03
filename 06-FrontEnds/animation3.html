@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw==" crossorigin="anonymous"></script>
+        <title>Animation app!</title>
+        
+        <style>
+            @keyframes grow {
+                from {
+                    font-size: 20px;
+                }
+                to {
+                    font-size: 100px;
+                }
+            }
+            h1 {
+                animation-name: grow;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+            }
+
+            @keyframes move {
+                0% {
+                    left:0%;
+                }
+                50% {
+                    left:50%;
+                }
+                100% {
+                    left:0%;
+                }
+            }
+
+            h2 {
+                position: relative;
+                animation-name: move;
+                animation-duration: 3s;
+                animation-fill-mode: forwards;
+                animation-iteration-count: infinite;
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const h2 = document.querySelector('h2');
+                h2.style.animationPlatState = 'paused';
+                document.querySelector('button'),onclick = () => {
+                    if (h2.style.animationPlayState === 'paused')
+                        h2.style.animationPlayState = 'running';
+                    else
+                        h2.style.animationPlayState = 'paused';
+                };
+            })
+        </script>
+       
+	</head>
+	<body>
+        <button>Click Here !</button>
+        <h1>Welcome</h1>
+        <h2>Welcome</h2>
+	</body>
+</html>

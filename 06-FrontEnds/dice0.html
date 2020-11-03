@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw==" crossorigin="anonymous"></script>
+        <title>Dice app!</title>
+        <script>
+            // Dice 0: Template for roll result
+            //const template = Handlebars.compile("<li>You rolled a {{ value }} </li>");
+            // Dice 1: Template for roll image
+            const template = Handlebars.compile("<li>You rolled: <img src=\"img/{{ value }}.png\"></li>");
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelector('#roll').onclick = () => {
+                    // Generate a random roll.
+                    const roll = Math.floor((Math.random() * 6) + 1);
+                    // Add roll result to DOM.
+                    const content = template({'value': roll});
+                    document.querySelector('#rolls').innerHTML += content;
+                }
+            });
+        </script>
+	</head>
+	<body>
+        <button id="roll">Roll</button>
+        <ul id="rolls">
+
+        </ul>
+	</body>
+</html>

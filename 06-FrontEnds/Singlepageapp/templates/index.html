@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Currency app!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                load_page('first');
+
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.onclick = () => {
+                        load_page(link.dataset.page);
+                        return false;
+                    }
+                })
+            });
+
+            window.onpopstate = e => {
+                const data = e.state;
+                document.title = data.title;
+                document.querySelector('#body').innerHTML = data.text;
+            }
+            //load page showing URL changes and navigation for back case with onpopstate
+            function load_page(name) {
+                const request = new XMLHttpRequest();
+                request.open('GET', `/${name}`);
+                request.onload = () => {
+                    const response = request.responseText;
+                    document.querySelector('#body').innerHTML = response;
+
+                    // Push state to URL to manipulate HTML5 history
+                    document.title = name;
+                    history.pushState({'title': name, 'text': response}, name, name);
+                };
+                request.send();
+            }
+            //load page showing URL changes
+            function load_page_second_example(name) {
+                const request = new XMLHttpRequest();
+                request.open('GET', `/${name}`);
+                request.onload = () => {
+                    const response = request.responseText;
+                    document.querySelector('#body').innerHTML = response;
+
+                    // Push state to URL to manipulate HTML5 history
+                    document.title = name;
+                    history.pushState(null, name, name);
+                };
+                request.send();
+            }
+            //load page keeping URL hidden
+            function load_page_first_example(name) {
+                const request = new XMLHttpRequest();
+                request.open('GET', `/${name}`);
+                request.onload = () => {
+                    const response = request.responseText;
+                    document.querySelector('#body').innerHTML = response;
+                };
+                request.send();
+            }
+        </script>
+	</head>
+	<body>
+        <ul id="nav">
+            <li><a href="" class="nav-link" data-page="first">First Page</a></li>
+            <li><a href="" class="nav-link" data-page="second">Second Page</a></li>
+            <li><a href="" class="nav-link" data-page="third">Third Page</a></li>
+        </ul>
+        <hr>
+        <div id="body"></div>       
+	</body>
+</html>
