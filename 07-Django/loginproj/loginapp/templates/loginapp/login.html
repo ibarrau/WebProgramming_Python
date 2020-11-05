@@ -1,0 +1,22 @@
+{% extends "loginapp/base.html" %}
+{% block title %}
+    Login App
+{% endblock %}
+
+{% block body %}
+    <h1>Login App</h1>
+    {% if message %}
+    <div>
+        {{ message }}
+    </div>
+    {% endif %}
+
+    <form action="{% url 'login' %}", method="post">
+        <!--Security layer to keep django safe to avoid exceptions-->
+        {% csrf_token %}
+        <!--the property "name" has to match with the method views.py with POST["name"]-->
+        <input type="text" name="username"  />
+        <input type="password" name="password" />
+        <input type="submit" value="Login" />
+    </form>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "flights/base.html" %}
+{% block title %}
+    Flight {{ flight.id }}
+{% endblock %}
+
+{% block body %}
+
+    <h1>Flight {{ flight.id }}</h1>
+    <ul>
+        <li>Origin: {{ flight.origin }} </li>
+        <li>Destination: {{ flight.destination }}</li>
+    </ul>
+    <h2>Passangers</h2>
+    <ul>
+        {% for passanger in passangers %}
+        <li>{{ passanger }}</li>
+        {% empty %}
+        <li>No passangers</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2>Add a Passanger</h2>
+
+    {% if non_passangers %}
+        <form action="{% url 'book' flight.id %}", method="post">
+            <!--Security layer to keep django safe to avoid exceptions-->
+            {% csrf_token %}
+            <!--the property "name" has to match with the method views.py with POST["name"]-->
+            <select name="passanger">
+                {% for passanger in non_passangers %}
+                <option value="{{ passanger.id }}">{{ passanger }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Book Flight" />
+        </form>
+    {% else %}
+        <div>No passanger to add.</div>
+    {% endif %}
+    
+    <a href="{% url 'index' %}">Back</a>
+
+{% endblock %}
